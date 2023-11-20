@@ -1,0 +1,783 @@
+{
+	"info": {
+		"_postman_id": "38bed243-24d7-474c-af9f-76a15ff82951",
+		"name": "Aeropuertos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30723597",
+		"_collection_link": "https://uniandes-miso-202315-apis-g21.postman.co/workspace/Team-Workspace~95049b87-fcb5-4056-8afa-988fec57dc8b/collection/30723597-38bed243-24d7-474c-af9f-76a15ff82951?action=share&source=collection_link&creator=30723597"
+	},
+	"item": [
+		{
+			"name": "Agregar una cultura gastronómica bad request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 400', function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.include(\"nombre should not be empty\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"atributo_incorrecto\": \"Cultura Gastronómica Italiana\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/{{version}}/aeropuertos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"{{version}}",
+						"aeropuertos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener todas las culturas gastronómicas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Número de culturas gastronómicas > ' + 0, function () {\r",
+							"   var data = pm.response.json()\r",
+							"   pm.expect(data.length).to.greaterThan(0)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/{{version}}/aeropuertos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"{{version}}",
+						"aeropuertos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/aeropuertos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"aeropuertos"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"nombre\": \"Cultura Gastronómica Italiana\",\n        \"descripcion\": \"Si tratamos de imaginarnos la cultura gastronímica italiana, la mayoría de la gente va a pensar en pasta o pizza, espagueti o salchichas. Pero como la mayoría de las tierras antiguas y con una larga historia, Italia tiene una cocina muy variada. Las variaciones regionales no se aprecian en ninguna parte de una forma tan brusca como la diferencia que existe entre la cocina del norte y la cocina del sur de Italia.\",\n        \"productos\": [\n            {\n                \"nombre\": \"Mariscos\",\n                \"historia\": \"Son la fuente básica de proteínas en la comida italiana. Como los platillos italianos con mariscos suelen mezclar muchos tipos e incluir pescados, no sólo se vuelven una fuente muy variada de proteína, sino que suplen al organismo con mucha omega-3, algo muy saludable para el corazón.\",\n                \"descripcion\": \"El marisco, en gastronomía, son los animales marinos invertebrados comestibles1​. En esta definición se incluyen normalmente los crustáceos (camarones, langostinos, cangrejos, percebes, entre otros), moluscos (mejillones, almejas, berberechos, chipirones, pulpos, entre otros) y otros animales marinos tales como algunos equinodermos (erizo de mar) y algunos urocordados (piure).\",\n                \"categoria\": { \n                    \"nombre\": \"Animales marinos\" \n                }\n            },\n            {\n                \"nombre\": \"Aceite de oliva\",\n                \"historia\": \"Italia es el segundo país productor de aceites de oliva a nivel mundial, siendo España el que encabeza la lista. Por otra parte, Italia sigue siendo el primer país exportador de aceites embotellados.\",\n                \"descripcion\": \"Es la mejor opción no sólo para los que buscan un sabor italiano, sino también para quienes la salud es lo más importante. Se trata de un aceite vegetal que se extrae de la aceituna (cuya pulpa es aceite en casi su tercera parte). Convierte la vitamina E que previene la oxidación del colesterol malo; posee grasas monoinsaturadas que ayudan a reducir los niveles de colesterol; en las personas diabéticas ayuda a rebajar los niveles de glucemia, por lo que necesitarían menos cantidad de insulina; se infiltra muy poco en el alimento, en lugar de eso realiza una costra que no deja que se escapen los nutrientes; ayuda al endurecimiento de los huesos y la cantidad de acidos grasos que lo constituyen satisface completamente exigencias nutricionales.\",\n                \"categoria\": { \n                    \"nombre\": \"Aceites\" \n                }\n            }\n        ]\n    },\n    {\n        \"nombre\": \"Cultura Gastronómica Francesa\",\n        \"descripcion\": \"Descripción cultura gastronómica Francesa\",\n        \"productos\": [\n            {\n                \"nombre\": \"Producto frances 1\",\n                \"historia\": \"Historia producto frances 1\",\n                \"descripcion\": \"Descripción producto frances 1\",\n                \"categoria\": { \n                    \"nombre\": \"Categoría 1 de productos\" \n                }\n            },\n            {\n                \"nombre\": \"Producto frances 2\",\n                \"historia\": \"Historia producto frances 2\",\n                \"descripcion\": \"Descripción producto frances 2\",\n                \"categoria\": { \n                    \"nombre\": \"Categoría 2 de productos\" \n                }\n            }\n        ]\n    }\n]"
+				},
+				{
+					"name": "503 Service Unavailable",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/aeropuertos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"aeropuertos"
+							]
+						}
+					},
+					"status": "Service Unavailable",
+					"code": 503,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 503,\n    \"message\": \"Service Unavailable\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener una cultura gastronómica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/{{version}}/aeropuertos/{{cultura_gastronomica_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"{{version}}",
+						"aeropuertos",
+						"{{cultura_gastronomica_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/aeropuertos/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"aeropuertos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"nombre\": \"Cultura Gastronómica Italiana\",\n    \"descripcion\": \"Si tratamos de imaginarnos la cultura gastronímica italiana, la mayoría de la gente va a pensar en pasta o pizza, espagueti o salchichas. Pero como la mayoría de las tierras antiguas y con una larga historia, Italia tiene una cocina muy variada. Las variaciones regionales no se aprecian en ninguna parte de una forma tan brusca como la diferencia que existe entre la cocina del norte y la cocina del sur de Italia.\",\n    \"productos\": [\n        {\n            \"nombre\": \"Mariscos\",\n            \"historia\": \"Son la fuente básica de proteínas en la comida italiana. Como los platillos italianos con mariscos suelen mezclar muchos tipos e incluir pescados, no sólo se vuelven una fuente muy variada de proteína, sino que suplen al organismo con mucha omega-3, algo muy saludable para el corazón.\",\n            \"descripcion\": \"El marisco, en gastronomía, son los animales marinos invertebrados comestibles1​. En esta definición se incluyen normalmente los crustáceos (camarones, langostinos, cangrejos, percebes, entre otros), moluscos (mejillones, almejas, berberechos, chipirones, pulpos, entre otros) y otros animales marinos tales como algunos equinodermos (erizo de mar) y algunos urocordados (piure).\",\n            \"categoria\": { \n                \"nombre\": \"Animales marinos\" \n            }\n        },\n        {\n            \"nombre\": \"Aceite de oliva\",\n            \"historia\": \"Italia es el segundo país productor de aceites de oliva a nivel mundial, siendo España el que encabeza la lista. Por otra parte, Italia sigue siendo el primer país exportador de aceites embotellados.\",\n            \"descripcion\": \"Es la mejor opción no sólo para los que buscan un sabor italiano, sino también para quienes la salud es lo más importante. Se trata de un aceite vegetal que se extrae de la aceituna (cuya pulpa es aceite en casi su tercera parte). Convierte la vitamina E que previene la oxidación del colesterol malo; posee grasas monoinsaturadas que ayudan a reducir los niveles de colesterol; en las personas diabéticas ayuda a rebajar los niveles de glucemia, por lo que necesitarían menos cantidad de insulina; se infiltra muy poco en el alimento, en lugar de eso realiza una costra que no deja que se escapen los nutrientes; ayuda al endurecimiento de los huesos y la cantidad de acidos grasos que lo constituyen satisface completamente exigencias nutricionales.\",\n            \"categoria\": { \n                \"nombre\": \"Aceites\" \n            }\n        }\n    ]\n}"
+				},
+				{
+					"name": "404 Not Found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/aeropuertos/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"aeropuertos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "-1"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La cultura gastronómica con id :id no existe\"\n}"
+				},
+				{
+					"name": "503 Service Unavailable",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/aeropuertos/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"aeropuertos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "Service Unavailable",
+					"code": 503,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 503,\n    \"message\": \"Service Unavailable\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener una cultura gastronómica no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"La cultura gastronómica con id 0 no existe\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/{{version}}/aeropuertos/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"{{version}}",
+						"aeropuertos",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar una cultura gastronómica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Cultura Gastronómica Italiana (modificada)\",\r\n    \"descripcion\": \"Si tratamos de imaginarnos la cultura gastronímica italiana, la mayoría de la gente va a pensar en pasta o pizza, espagueti o salchichas. Pero como la mayoría de las tierras antiguas y con una larga historia, Italia tiene una cocina muy variada. Las variaciones regionales no se aprecian en ninguna parte de una forma tan brusca como la diferencia que existe entre la cocina del norte y la cocina del sur de Italia.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/{{version}}/aeropuertos/{{cultura_gastronomica_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"{{version}}",
+						"aeropuertos",
+						"{{cultura_gastronomica_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Nueva Cultura Gastronómica Italiana\",\r\n    \"descripcion\": \"Si tratamos de imaginarnos la cultura gastronímica italiana, la mayoría de la gente va a pensar en pasta o pizza, espagueti o salchichas. Pero como la mayoría de las tierras antiguas y con una larga historia, Italia tiene una cocina muy variada. Las variaciones regionales no se aprecian en ninguna parte de una forma tan brusca como la diferencia que existe entre la cocina del norte y la cocina del sur de Italia.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/aeropuertos/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"aeropuertos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"nombre\": \"Nueva Cultura Gastronómica Italiana\",\n    \"descripcion\": \"Si tratamos de imaginarnos la cultura gastronímica italiana, la mayoría de la gente va a pensar en pasta o pizza, espagueti o salchichas. Pero como la mayoría de las tierras antiguas y con una larga historia, Italia tiene una cocina muy variada. Las variaciones regionales no se aprecian en ninguna parte de una forma tan brusca como la diferencia que existe entre la cocina del norte y la cocina del sur de Italia.\"\n}"
+				},
+				{
+					"name": "404 Not Found",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Nueva Cultura Gastronómica Italiana\",\r\n    \"descripcion\": \"Si tratamos de imaginarnos la cultura gastronímica italiana, la mayoría de la gente va a pensar en pasta o pizza, espagueti o salchichas. Pero como la mayoría de las tierras antiguas y con una larga historia, Italia tiene una cocina muy variada. Las variaciones regionales no se aprecian en ninguna parte de una forma tan brusca como la diferencia que existe entre la cocina del norte y la cocina del sur de Italia.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/aeropuertos/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"aeropuertos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "-1"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La cultura gastronómica con id :id no existe\"\n}"
+				},
+				{
+					"name": "503 Service Unavailable",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Nueva Cultura Gastronómica Italiana\",\r\n    \"descripcion\": \"Si tratamos de imaginarnos la cultura gastronímica italiana, la mayoría de la gente va a pensar en pasta o pizza, espagueti o salchichas. Pero como la mayoría de las tierras antiguas y con una larga historia, Italia tiene una cocina muy variada. Las variaciones regionales no se aprecian en ninguna parte de una forma tan brusca como la diferencia que existe entre la cocina del norte y la cocina del sur de Italia.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/aeropuertos/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"aeropuertos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "Service Unavailable",
+					"code": 503,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 503,\n    \"message\": \"Service Unavailable\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar una cultura gastronómica no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"La cultura gastronómica con id 0 no existe\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Cultura Gastronómica Italiana (modificada)\",\r\n    \"descripcion\": \"Si tratamos de imaginarnos la cultura gastronímica italiana, la mayoría de la gente va a pensar en pasta o pizza, espagueti o salchichas. Pero como la mayoría de las tierras antiguas y con una larga historia, Italia tiene una cocina muy variada. Las variaciones regionales no se aprecian en ninguna parte de una forma tan brusca como la diferencia que existe entre la cocina del norte y la cocina del sur de Italia.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/{{version}}/aeropuertos/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"{{version}}",
+						"aeropuertos",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar una cultura gastronómica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/{{version}}/aeropuertos/{{cultura_gastronomica_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"{{version}}",
+						"aeropuertos",
+						"{{cultura_gastronomica_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "204 No Content",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/aeropuertos/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"aeropuertos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "404 Not Found",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/aeropuertos/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"aeropuertos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "-1"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"statusCode\": 404,\r\n    \"message\": \"La cultura gastronómica con id :id no existe\"\r\n}"
+				},
+				{
+					"name": "503 Service Unavailable",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/{{version}}/aeropuertos/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"{{version}}",
+								"aeropuertos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "Service Unavailable",
+					"code": 503,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 503,\n    \"message\": \"Service Unavailable\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar una cultura gastronómica no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"La cultura gastronómica con id 0 no existe\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/{{version}}/aeropuertos/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"{{version}}",
+						"aeropuertos",
+						"0"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000"
+		},
+		{
+			"key": "version",
+			"value": "api/v1"
+		}
+	]
+}
