@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "5ff601f6-8175-4d66-8c2f-023d6fed6f23",
+		"_postman_id": "469e0f55-2719-4cad-b5ff-5e77562b9a83",
 		"name": "Aerolineas",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "31040814"
+		"_exporter_id": "31040814",
+		"_collection_link": "https://dark-flare-12836.postman.co/workspace/API-Rest~eb838eab-dab6-40ef-ae43-4a4e9ec9f39c/collection/31040814-469e0f55-2719-4cad-b5ff-5e77562b9a83?action=share&source=collection_link&creator=31040814"
 	},
 	"item": [
 		{
@@ -13,7 +14,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Torta de Chocolate\",\r\n    \"descripcion\": \"Una deliciosa torta de chocolate esponjosa y húmeda.\",\r\n    \"fotoPath\": \"/imagenes/torta-chocolate.jpg\",\r\n    \"fechaFundacion\": \"1. Precalienta el horno a 180 grados Celsius.\\n2. Mezcla la harina, el cacao, y la levadura en un tazón.\\n3. Bate los huevos y agrega el azúcar hasta obtener una mezcla suave.\\n4. Añade la mezcla de harina y cacao a la mezcla de huevos y azúcar.\\n5. Vierte la masa en un molde para pastel y hornea durante 30 minutos.\\n6. Deja enfriar antes de decorar con crema de chocolate.\",\r\n    \"paginaWeb\": \"/videos/torta-chocolate.mp4\"\r\n}\r\n",
+					"raw": "\r\n{\r\n\"nombre\": \"Torta de Chocolate\",\r\n\"descripcion\": \"Una deliciosa torta de chocolate esponjosa y húmeda.\",\r\n\"fechaFundacion\": \"2022/02/02\",\r\n\"paginaWeb\": \"/videos/torta-chocolate.mp4\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -39,7 +40,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Tacos al Pastor\",\r\n    \"descripcion\": \"Deliciosos tacos de cerdo adobado con piña y cebolla.\",\r\n    \"fotoPath\": \"https://ejemplo.com/tacos-al-pastor.jpg\",\r\n    \"fechaFundacion\": \"1. Marinar la carne de cerdo con achiote y especias. 2. Cocinar en un trompo vertical. 3. Cortar finamente y servir en tortillas con cebolla y piña. 4. Añadir salsa al gusto.\",\r\n    \"paginaWeb\": \"https://ejemplo.com/video-tacos-al-pastor.mp4\"\r\n}\r\n",
+							"raw": "\r\n{\r\n\"nombre\": \"Torta de Chocolate\",\r\n\"descripcion\": \"Una deliciosa torta de chocolate esponjosa y húmeda.\",\r\n\"fechaFundacion\": \"2022/02/02\",\r\n\"paginaWeb\": \"/videos/torta-chocolate.mp4\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -70,7 +71,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\r\n    \"nombre\": \"Tacos al Pastor\",\r\n    \"descripcion\": \"Deliciosos tacos de cerdo adobado con piña y cebolla.\",\r\n    \"fotoPath\": \"https://ejemplo.com/tacos-al-pastor.jpg\",\r\n    \"fechaFundacion\": \"1. Marinar la carne de cerdo con achiote y especias. 2. Cocinar en un trompo vertical. 3. Cortar finamente y servir en tortillas con cebolla y piña. 4. Añadir salsa al gusto.\",\r\n    \"paginaWeb\": \"https://ejemplo.com/video-tacos-al-pastor.mp4\"\r\n}\r\n"
+					"body": "\r\n{\r\n\"nombre\": \"Torta de Chocolate\",\r\n\"descripcion\": \"Una deliciosa torta de chocolate esponjosa y húmeda.\",\r\n\"fechaFundacion\": \"2022/02/02\",\r\n\"paginaWeb\": \"/videos/torta-chocolate.mp4\"\r\n}\r\n"
 				},
 				{
 					"name": "400 bad request",
@@ -110,7 +111,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\r\n  \"statusCode\": 400,\r\n  \"message\": \"Bad request\"\r\n}"
+					"body": "{\r\n    \"statusCode\": 404,\r\n    \"message\": \"Cannot POST /api/v1/11/aerolineas\",\r\n    \"error\": \"Not Found\"\r\n}"
 				},
 				{
 					"name": "503 Service Unavailable",
@@ -153,53 +154,6 @@
 					"body": "{\r\n  \"statusCode\": 503,\r\n  \"message\": \"Service Unavailable\"\r\n}"
 				}
 			]
-		},
-		{
-			"name": "Agregar una aerolinea bad request",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test('Status code is 400', function () {\r",
-							"    pm.response.to.have.status(400);\r",
-							"})\r",
-							"\r",
-							"pm.test(\"Get expected error message\", function () {\r",
-							"   var data = pm.response.json();\r",
-							"   pm.expect(data.message).to.include(\"nombre should not be empty\");\r",
-							"});\r",
-							"\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"atributo_incorrecto\": \"Torta de Chocolate\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{baseUrl}}/{{version}}/productos",
-					"host": [
-						"{{baseUrl}}"
-					],
-					"path": [
-						"{{version}}",
-						"productos"
-					]
-				}
-			},
-			"response": []
 		},
 		{
 			"name": "Obtener todas las aerolineas",
@@ -247,7 +201,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "[\n    {\n        \"nombre\": \"Tacos al Pastor\",\n        \"descripcion\": \"Deliciosos tacos de cerdo adobado con piña y cebolla.\",\n        \"fotoPath\": \"https://ejemplo.com/tacos-al-pastor.jpg\",\n        \"fechaFundacion\": \"1. Marinar la carne de cerdo con achiote y especias. 2. Cocinar en un trompo vertical. 3. Cortar finamente y servir en tortillas con cebolla y piña. 4. Añadir salsa al gusto.\",\n        \"paginaWeb\": \"https://ejemplo.com/video-tacos-al-pastor.mp4\"\n    },\n    {\n        \"nombre\": \"Sushi\",\n        \"descripcion\": \"Plato japonés de arroz y pescado fresco enrollado en algas nori.\",\n        \"fotoPath\": \"https://ejemplo.com/sushi.jpg\",\n        \"fechaFundacion\": \"1. Cocinar arroz de sushi y enfriarlo. 2. Cortar pescado fresco en tiras. 3. Enrollar el arroz y el pescado en algas nori. 4. Cortar en porciones y servir con salsa de soja y wasabi.\",\n        \"paginaWeb\": \"https://ejemplo.com/video-sushi.mp4\"\n    },\n    {\n        \"nombre\": \"Paella\",\n        \"descripcion\": \"Plato tradicional español de arroz, mariscos y especias.\",\n        \"fotoPath\": \"https://ejemplo.com/paella.jpg\",\n        \"fechaFundacion\": \"1. Calentar aceite en una paellera. 2. Sofreír cebolla, ajo y pimiento. 3. Agregar arroz y caldo. 4. Añadir mariscos y especias. 5. Cocinar hasta que el arroz esté tierno y se forme una costra dorada en el fondo.\",\n        \"paginaWeb\": \"https://ejemplo.com/video-paella.mp4\"\n    }\n]\n"
+					"body": "[\n    \n    {\n        \"nombre\": \"Torta de Chocolate\",\n        \"descripcion\": \"Una deliciosa torta de chocolate esponjosa y húmeda.\",\n        \"fechaFundacion\": \"2022/02/02\",\n        \"paginaWeb\": \"/videos/torta-chocolate.mp4\"\n    }\n\n]\n"
 				},
 				{
 					"name": "503 Service Unavailable",
@@ -342,7 +296,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"nombre\": \"Tacos al Pastor\",\n    \"descripcion\": \"Deliciosos tacos de cerdo adobado con piña y cebolla.\",\n    \"fotoPath\": \"https://ejemplo.com/tacos-al-pastor.jpg\",\n    \"fechaFundacion\": \"1. Marinar la carne de cerdo con achiote y especias. 2. Cocinar en un trompo vertical. 3. Cortar finamente y servir en tortillas con cebolla y piña. 4. Añadir salsa al gusto.\",\n    \"paginaWeb\": \"https://ejemplo.com/video-tacos-al-pastor.mp4\"\n}\n"
+					"body": "\n{\n    \"nombre\": \"Torta de Chocolate\",\n    \"descripcion\": \"Una deliciosa torta de chocolate esponjosa y húmeda.\",\n    \"fechaFundacion\": \"2022/02/02\",\n    \"paginaWeb\": \"/videos/torta-chocolate.mp4\"\n}\n\n"
 				},
 				{
 					"name": "404 Not Found",
@@ -466,7 +420,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Tacos Mexicanos\",\r\n    \"descripcion\": \"Deliciosos tacos de frijoles adobado con chile y cebolla.\",\r\n    \"fotoPath\": \"https://ejemplo.com/tacos-mexicanos.jpg\",\r\n    \"fechaFundacion\": \"1. Marinar la carne de res con achiote y especias. 2. Cocinar en un trompo vertical. 3. Cortar finamente y servir en tortillas con cebolla y chile. 4. Añadir salsa al gusto.\",\r\n    \"paginaWeb\": \"https://ejemplo.com/video-mexicanos.mp4\"\r\n}\r\n",
+					"raw": "\r\n{\r\n    \"nombre\": \"viaje de verdad\",\r\n    \"descripcion\": \"espectacular viaje.\",\r\n    \"fechaFundacion\": \"2022/02/02\",\r\n    \"paginaWeb\": \"/videos/tviaje.com\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -544,7 +498,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"nombre\": \"Tacos Mexicanos\",\n    \"descripcion\": \"Deliciosos tacos de frijoles adobado con chile y cebolla.\",\n    \"fotoPath\": \"https://ejemplo.com/tacos-mexicanos.jpg\",\n    \"fechaFundacion\": \"1. Marinar la carne de res con achiote y especias. 2. Cocinar en un trompo vertical. 3. Cortar finamente y servir en tortillas con cebolla y chile. 4. Añadir salsa al gusto.\",\n    \"paginaWeb\": \"https://ejemplo.com/video-mexicanos.mp4\"\n}"
+					"body": "\n{\n    \"nombre\": \"viaje de verdad\",\n    \"descripcion\": \"espectacular viaje.\",\n    \"fechaFundacion\": \"2022/02/02\",\n    \"paginaWeb\": \"/videos/tviaje.com\"\n}"
 				},
 				{
 					"name": "404 Not Found",
@@ -663,7 +617,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Tacos Mexicanos\",\r\n    \"descripcion\": \"Deliciosos tacos de frijoles adobado con chile y cebolla.\",\r\n    \"fotoPath\": \"https://ejemplo.com/tacos-mexicanos.jpg\",\r\n    \"fechaFundacion\": \"1. Marinar la carne de res con achiote y especias. 2. Cocinar en un trompo vertical. 3. Cortar finamente y servir en tortillas con cebolla y chile. 4. Añadir salsa al gusto.\",\r\n    \"paginaWeb\": \"https://ejemplo.com/video-mexicanos.mp4\"\r\n}\r\n",
+					"raw": "\r\n{\r\n    \"nombre\": \"viaje de verdad\",\r\n    \"descripcion\": \"espectacular viaje.\",\r\n    \"fechaFundacion\": \"2022/02/02\",\r\n    \"paginaWeb\": \"/videos/tviaje.com\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
